@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nuclent i18n Extractor</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 10px;
+      }
+      ul {
+        list-style-type: none;
+        padding-left: 0;
+        font-family: monospace;
+        white-space: nowrap;
+        overflow-x: auto;
+      }
+      li {
+        margin-bottom: 5px;
+      }
+      #counter {
+        font-weight: bold;
+      }
+      button {
+        margin-right: 10px;
+        padding: 5px 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      #reset-button {
+        background-color: #f44336;
+      }
+      #reset-button:hover {
+        background-color: #d32f2f;
+      }
+      #button-container {
+        margin-bottom: 10px;
+      }
+      #copy-message {
+        color: green;
+        margin-top: 5px;
+        display: none;
+      }
+      #interactive-toggle {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Extracted i18n Data</h1>
+    <div id="button-container">
+      <button id="reset-button">Reset Data</button>
+      <button id="copy-button">Copy to Clipboard</button>
+      <label>
+        <input type="checkbox" id="interactive-toggle"> Interactive Mode
+      </label>
+      <label>
+        <input type="checkbox" id="edit-toggle"> Editable
+      </label>
+      <p id="copy-message">Copied!</p> <!-- Moved message directly after the Copy button -->
+    </div>
+    <p id="counter">Total keys: 0</p>
+    <ul id="i18n-list"></ul>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
