@@ -191,7 +191,23 @@ function handleInteractiveClick(event) {
     event.preventDefault();  // Prevent default behavior like navigation
     event.stopPropagation(); // Stop the event from propagating up the DOM
 
-    const i18nKey = event.target.getAttribute('data-i18n');
+    let targetElement = event.target;
+    let i18nKey = null;
+
+    // Traverse up the DOM tree until an element with data-i18n is found
+    while (targetElement && !i18nKey) {
+        i18nKey = targetElement.getAttribute('data-i18n');
+        if (!i18nKey) {
+            targetElement = targetElement.parentElement;  // Move to the parent element
+        }
+    }
+
+    // If no i18nKey was found, exit the function
+    if (!i18nKey) {
+        console.log("No data-i18n attribute found on the clicked element or its parents.");
+        return;
+    }
+
     const x = event.pageX;
     const y = event.pageY;
     showTranslationPopup(i18nKey, x, y);  // Show the popup at the cursor position
